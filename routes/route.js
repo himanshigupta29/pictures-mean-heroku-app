@@ -55,6 +55,10 @@ router.post('/products', (req, res, next) => {
 
 function getSignedUrl(req, res, next){
 
+    if(!req.query.name){
+      res.send('');
+    }
+
     var params = {
       Bucket: 'himanshigupta',
       Key: 'Pictures/' + req.query.name,
