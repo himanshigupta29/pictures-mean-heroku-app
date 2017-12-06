@@ -10,8 +10,7 @@ import { UploadService } from './common/upload.service';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { PicturesComponent } from './pictures/pictures.component';
-import { PictureItemComponent } from './pictures/picture-item/picture-item.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 import { LoaderComponent } from './loader/loader.component';
 
 import { PicturesService } from './pictures/picture.service';
@@ -21,8 +20,6 @@ import { PicturesService } from './pictures/picture.service';
     AppComponent,
     SearchComponent,
     PicturesComponent,
-    PictureItemComponent,
-    PageNotFoundComponent,
     LoaderComponent
   ],
   imports: [
