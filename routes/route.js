@@ -1,4 +1,4 @@
-var uuid = require('uuid');
+// var uuid = require('uuid');
 var aws = require('aws-sdk');
 
 aws.config.update({
@@ -17,7 +17,7 @@ const router = express.Router();
 
 router.get('/products/:skip', (req, res, next) => {
 
-  console.log('skip', req.params['skip']);
+  // console.log('skip', req.params['skip']);
 
   const skip = Number(req.params['skip']);
   let query = {};

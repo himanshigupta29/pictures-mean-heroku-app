@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var path = require('path');
 
-// const route = require('./routes/route');
+const route = require('./routes/route');
 mongoose.connect('mongodb://himanshigupta:himanshi222@ds129936.mlab.com:29936/picture-gallery');
 
 // mongodb://<dbuser>:<dbpassword>@ds129936.mlab.com:29936/picture-gallery
@@ -23,7 +23,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/dist'));
 
-//app.use('/api', route);
+app.use('/api', route);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
