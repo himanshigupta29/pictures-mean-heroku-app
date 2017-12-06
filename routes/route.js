@@ -17,8 +17,6 @@ const router = express.Router();
 
 router.get('/products/:skip', (req, res, next) => {
 
-  // console.log('skip', req.params['skip']);
-
   const skip = Number(req.params['skip']);
   let query = {};
 
@@ -33,42 +31,29 @@ router.get('/products/:skip', (req, res, next) => {
   skip(skip).
   limit(7).
   sort({ _id: -1 }).
-  // sort('-occupation').
-   select({ url: 1, tags: 1, _id: 0 }).
+  select({ url: 1, tags: 1, _id: 0 }).
   exec(callbackf);
 
   function callbackf(error, pictures) {
     res.json(pictures);
   }
 
-  // res.send('hihihiihih');
 });
 
 router.post('/products', (req, res, next) => {
 
   let picture = new Picture(req.body);
-  console.log('body...... ', req.body);
 
   picture.save((err, newPicture) => {
     if (err) {
         res.status(500).send(err);
     }
-    console.log('newPicture......... ', newPicture);
     res.status(200).send(newPicture);
   });
 
 });
 
-// router.get('/search/:tag', (req, res, next) => {
-//
-//   res.send({hi: 'hello'});
-//
-//
-// });
-
 function getSignedUrl(req, res, next){
-
-  console.log('============= ', req.query);
 
     var params = {
       Bucket: 'himanshigupta',
@@ -77,6 +62,7 @@ function getSignedUrl(req, res, next){
       ContentType: 'image/jpeg',
       ACL: 'public-read'
     };
+
     s3.getSignedUrl('putObject', params, function(err, signedUrl){
       if(err){
         console.log(err);
