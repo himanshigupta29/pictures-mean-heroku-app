@@ -41,16 +41,14 @@ export class SearchComponent implements OnInit {
   }
 
   performSearch() {
-    console.log('searchKey', this.searchKey);
     this.pictureService.searchPictures.emit({search: this.searchKey});
   }
 
-  findtags(){
-    console.log('tags', this.tags);
-  }
+  // findtags(){
+  //   console.log('tags', this.tags);
+  // }
 
   removeTag(index: number){
-    console.log('tags', this.tags);
     this.tags.splice(index, 1);
   }
 
@@ -72,7 +70,6 @@ export class SearchComponent implements OnInit {
     }
     this.uploadService.savePicture(picture).subscribe( (data) => {
 
-      console.log('image saved successfully', data);
       this.onCloseUploadModal();
       this.pictureService.newPictureSaved.emit(
         {
@@ -104,7 +101,6 @@ export class SearchComponent implements OnInit {
         const getUrl = data.getURL;
             this.uploadService.uploadImageToS3(postUrl, file).subscribe(
               (data) => {
-                console.log('image uploaded successfully', data);
                     form.reset();
                     this.imageUploaded = true;
                     this.newPictureUrl = getUrl;
@@ -120,11 +116,5 @@ export class SearchComponent implements OnInit {
 
 
   }
-
-  // onSubmit(formData: NgForm) {
-  //
-  //   console.log('on submitted !!!! ', formData);
-  //
-  // }
 
 }

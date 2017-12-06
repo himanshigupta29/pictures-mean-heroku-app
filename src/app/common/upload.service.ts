@@ -44,8 +44,6 @@ export class UploadService {
 
        return this.http.put(uploadUrl, file, moptions)
           .map((response: Response) => {
-          //  console.log('mmmmmmmmmmmm');
-              //  const data =  response.json();
                 return '';
           });
 

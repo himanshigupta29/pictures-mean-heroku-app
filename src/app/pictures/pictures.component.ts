@@ -25,7 +25,6 @@ export class PicturesComponent implements OnInit {
     this.pictures = [];
 
     this.picturesService.searchPictures.subscribe((data) => {
-      console.log('search performed', data);
       this.finished = false;
       this.picturesCount = 0;
       this.searchKey = data.search;
@@ -42,7 +41,6 @@ export class PicturesComponent implements OnInit {
 
 
     this.picturesService.newPictureSaved.subscribe((data) => {
-      console.log('new picyure saved', data);
       this.prependPicture(data);
     });
   }
@@ -52,9 +50,9 @@ export class PicturesComponent implements OnInit {
     if(this.finished) {
       return;
     } else {
-      console.log('old value this.picturesCount', this.picturesCount);
+
       this.picturesCount = this.picturesCount + 7;
-      console.log('this.picturesCount ', this.picturesCount);
+
       this.picturesService.getPictures(this.picturesCount, this.searchKey)
       .subscribe( ( picturesResponse: any[])=> {
         if(!picturesResponse.length) {
@@ -73,7 +71,6 @@ export class PicturesComponent implements OnInit {
       return;
     } else {
 
-      console.log('this.picturesCount ', this.picturesCount);
       this.picturesService.getPictures(this.picturesCount, this.searchKey)
       .subscribe( ( picturesResponse: any[])=> {
 
@@ -89,15 +86,11 @@ export class PicturesComponent implements OnInit {
   }
 
   onScroll(){
-    console.log("=================");
     this.addMorePictures();
   }
 
   private prependPicture(picture) {
-    console.log('added', this.pictures);
-
      this.pictures.unshift(picture);
-
   }
 
 }
