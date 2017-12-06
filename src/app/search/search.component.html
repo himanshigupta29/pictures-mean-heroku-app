@@ -1,0 +1,109 @@
+
+<div class="search-outer">
+
+  <div class="search-inner">
+  <div class="row">
+    <div class="col-sm-7 col-xs-5 search-layer">
+      <form (ngSubmit) = "performSearch()">
+        <label class="sr-only" for="inlineFormInputGroupUsername"> Search images</label>
+        <div class="input-group mb-2 mb-sm-0">
+          <input type="text" class="form-control dearch-image-field"
+          id="inlineFormInputGroupUsername" name = "search"
+          placeholder="Search" [(ngModel)] = "searchKey">
+          <input type="submit" style="display: none;" />
+          <div class="input-group-addon search-submit"
+          (click) = "performSearch()">
+            <img src="../assets/images/search.png" alt="">
+          </div>
+        </div>
+      </form>
+
+      </div>
+  </div>
+
+
+  </div>
+
+  <div class="search-upload">
+    <div class="search-upload-line">
+      <button class="btn btn-success btn-lg" (click) = "onOpenUploadModal()">
+        Upload
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal" [ngClass] = "{show: uploadModalOpen}" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"> Upload Image</h5>
+        <button type="button" (click) = "onCloseUploadModal()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form (ngSubmit) = "uploadImage(f)" #f>
+          <div class="form-group">
+            <input type="file"
+            accept="image/*"
+            name = "selectFile"  id="selectFile" #selectedImageFile />
+
+            <button class="btn"
+            [ngClass] = "{'btn-primary': !imageUploaded, 'btn-success': imageUploaded }" >
+              {{ imageUploaded ? 'uploaded' : 'upload'}}
+            </button>
+          </div>
+        </form>
+
+        <div>
+
+
+          <div>
+            <br>
+            <form class="form-inline" (ngSubmit) = "addTags()">
+
+              <div class="form-group">
+                <label class="sr-only" for="newtag"> New Tag </label>
+                <input name ="newtag" id="newtag" class="form-control" type="text" [(ngModel)] = "newTag"/>
+
+                <button style="margin-left: 5px;" class="btn btn-outline-primary" (click) = "addTags()">
+                  Add Tag
+                </button>
+
+              </div>
+
+              <!-- <button type="submit" class="btn btn-primary">Confirm identity</button> -->
+            </form>
+
+          </div>
+
+          <br>
+
+          <!-- <a (click) = "findtags()">find</a> -->
+          <div *ngFor = "let tag of tags; let i = index" class="row">
+            <div class="col-md-4">
+              {{tag}}
+            </div>
+            <div class="col-md-4">
+              <a (click) = "removeTag(i)" style="color: #0069D9; cursor: pointer">
+                 Remove Tag
+             </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button *ngIf = "imageUploaded"
+        type="button"
+        (click) = "OnSavePicture()"
+        class="btn btn-success">
+          Save
+        </button>
+        <button type="button" class="btn btn-secondary" (click) = "onCloseUploadModal()" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
