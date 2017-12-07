@@ -80,9 +80,9 @@ export class PicturesComponent implements OnInit {
       .subscribe( ( picturesResponse: any[])=> {
 
           this.pictures = picturesResponse;
-          if(!picturesResponse.length) {
+          if(picturesResponse.length < 7) {
             this.finished = true;
-            return;
+
           }
 
       }, () => {}, () => {});

@@ -1,6 +1,8 @@
 // var uuid = require('uuid');
 var aws = require('aws-sdk');
 
+// require('dotenv').config()
+
 aws.config.update({
   "accessKeyId": process.env.S3_KEY || "XXX-XXX-XXX",
   "secretAccessKey": process.env.S3_SECRET || "xxx-xxx-xxx",
