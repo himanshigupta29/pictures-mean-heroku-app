@@ -15,7 +15,7 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/products/:skip', (req, res, next) => {
+router.get('/pictures/:skip', (req, res, next) => {
 
   const skip = Number(req.params['skip']);
   let query = {};
@@ -40,7 +40,7 @@ router.get('/products/:skip', (req, res, next) => {
 
 });
 
-router.post('/products', (req, res, next) => {
+router.post('/pictures', (req, res, next) => {
 
   let picture = new Picture(req.body);
 

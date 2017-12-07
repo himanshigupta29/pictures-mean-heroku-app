@@ -35,6 +35,10 @@ export class PicturesComponent implements OnInit {
     .subscribe( ( picturesResponse: any[])=> {
 
       this.pictures = picturesResponse;
+      if(picturesResponse.length < 7) {
+        this.finished = true;
+        return;
+      }
 
     }, () => {}, () => {});
     // this.pictures = this.picturesService.getPictures();
@@ -55,11 +59,12 @@ export class PicturesComponent implements OnInit {
 
       this.picturesService.getPictures(this.picturesCount, this.searchKey)
       .subscribe( ( picturesResponse: any[])=> {
-        if(!picturesResponse.length) {
-          this.finished = true;
-          return;
-        }
+
         this.pictures.push(...picturesResponse);
+        if(picturesResponse.length < 7) {
+          this.finished = true;
+        }
+
       }, () => {}, () => {});
     }
 

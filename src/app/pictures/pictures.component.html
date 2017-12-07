@@ -4,10 +4,10 @@
     <div class="row">
       <div class="col-md-4 col-sm-6 col-xs-12" *ngFor  = "let picture of pictures">
         <div class="hovereffect">
-          <img class="img-responsive" [src]="picture.url" alt="">
+          <img class="img-fluid" [src]="picture.url" alt="">
           <div class="overlay">
             <!-- <h2>Hover effect 3</h2> -->
-            <a class="info" href="#">Edit</a>
+            <a class="info" >Edit</a>
           </div>
         </div>
       </div>
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="row" *ngIf = "pictures.length === 0" >
+    <div class="row" *ngIf = "finished && pictures.length === 0" >
       <div class="col-md-12">
         No results found
       </div>

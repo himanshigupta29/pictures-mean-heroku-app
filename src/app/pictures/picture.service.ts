@@ -18,7 +18,7 @@ export class PicturesService {
 
     getPictures(skip: number, searchKey: string) {
 
-      const url = 'api/products/' + skip + '/?searchkey=' + searchKey;
+      const url = 'api/pictures/' + skip + '/?searchkey=' + searchKey;
 
       return this.http.get(url)
       .map(

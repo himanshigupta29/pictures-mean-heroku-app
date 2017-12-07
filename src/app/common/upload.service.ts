@@ -51,7 +51,7 @@ export class UploadService {
 
   savePicture(picture) {
 
-    return this.http.post('api/products/', picture)
+    return this.http.post('api/pictures/', picture)
     .map(
       (response: Response) => {
         const data =  response.json();
