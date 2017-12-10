@@ -3,7 +3,9 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var path = require('path');
 
-// const route = require('./routes/route');
+const route = require('./routes/route');
+
+// require('dotenv').config()
 
 const MONGO_USER = process.env.MLAB_USER || "XXX-XXX-XXX";
 const MONGO_USER_SECRET = process.env.MLAB_USER_SECRET || "XXX-XXX-XXX";
